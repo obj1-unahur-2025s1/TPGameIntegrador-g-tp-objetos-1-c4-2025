@@ -94,3 +94,4 @@ object arriba inherits Direccion {
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
 }
+
