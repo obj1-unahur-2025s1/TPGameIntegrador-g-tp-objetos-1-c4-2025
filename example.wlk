@@ -1,9 +1,17 @@
-object pepita {
-  var energy = 100
+import wollok.game.*
+object pantallaInicio {
+  const position = game.at(0,0)
+  method image() = "pantallaDeInicio.png"
+  method position() = position
+  method cargar() {
+    game.addVisual(self)
+    keyboard.enter().onPressDo({game.removeVisual(self)
+                                nivel1.iniciar()})
+  }
 
-  method energy() = energy
+}
+object nivel1 {
+  method iniciar() {
 
-  method fly(minutes) {
-    energy = energy - minutes * 3
   }
 }
