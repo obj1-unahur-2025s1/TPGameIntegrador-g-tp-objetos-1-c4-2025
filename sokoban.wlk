@@ -67,9 +67,7 @@ object personaje {
 		direccion = unaDireccion
 	}
 	
-
 }
-
 
 class Direccion {
 	method siguiente(position)
@@ -93,4 +91,16 @@ object abajo inherits Direccion {
 object arriba inherits Direccion { 
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
+}
+
+class Pared{   
+  method image() = "Wall_Beige.png"
+
+  const property position
+
+  method movete(direccion) {}
+
+  //Colision
+  method esPisable() = false
+
 }

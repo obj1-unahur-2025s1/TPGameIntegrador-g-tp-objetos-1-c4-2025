@@ -1,28 +1,78 @@
 import sokoban.*
 import inicioYTeclado.* 
-
 class Nivel{
-    const property siguienteNivel
+  const property siguienteNivel
 
-    method iniciar() {
-        game.addVisual(personaje)
-	    teclado.iniciar()
-        keyboard.r().onPressDo({ self.restart() })
-    }
+  method iniciar() {
+    game.addVisual(personaje)
+	teclado.iniciar()
+    keyboard.r().onPressDo({ self.restart() })
 
-    method restart() {
+		//	PAREDES
+		const ancho = game.width() - 1
+		const largo = game.height() - 1
+		
+		const posicionesParedes = []
+
+    // borde inferior
+		(0 .. ancho).forEach(
+			{ n => posicionesParedes.add(new Position(x = n, y = 0)) }
+		)
+
+    // borde superior
+    	(0 .. ancho).forEach(
+			{ n => posicionesParedes.add(new Position(x = n, y = largo)) }
+		)
+
+		// borde izq
+		(0 .. largo).forEach(
+			{ n => posicionesParedes.add(new Position(x = 0, y = n)) }
+		)
+		
+    // borde der
+		(0 .. largo).forEach(
+			{ n => posicionesParedes.add(new Position(x = ancho, y = n)) }
+		)
+
+		posicionesParedes.forEach({ posicionParedes => self.dibujar(new Pared(position = posicionParedes)) })
+  }
+    
+
+  method restart() {
 		game.clear()
 		self.iniciar()
+	}
+    
+  method dibujar(dibujo) {
+		game.addVisual(dibujo)
+		return dibujo
 	}
     
 }
 
 
-const nivel1 = new Nivel ( 
-    siguienteNivel = nivel2 
+object nivel1 inherits Nivel (siguienteNivel = nivel2){
+	const posicionesParedes = []
+    override method iniciar(){
+		super()
 
-)
+		//paredes propias del nivel
+      	posicionesParedes.addAll(
+			[
+				new Position(x = 3, y = 5),
+				new Position(x = 4, y = 5),
+				new Position(x = 5, y = 5)
+			]
+		)
 
-const nivel2 = new Nivel(
-    siguienteNivel = nivel1 //agregar nivel 3 o pantalla final
-)
+		posicionesParedes.forEach({ posicionParedes => self.dibujar(new Pared(position = posicionParedes)) })
+    }
+
+}
+
+object nivel2 inherits Nivel (siguienteNivel = nivel1){ //agregar nivel 3 o pantalla final
+    override method iniciar(){
+      super()
+    }
+
+}
