@@ -1,6 +1,6 @@
 import sokoban.*
 import inicioYTeclado.* 
-import paredesYCajas.*
+import paredesYCajasYMetas.*
 class Nivel{
   const property siguienteNivel
 
@@ -67,6 +67,14 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 		)
 
 		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
+
+		//donde hay que ubicar las cajas
+		const metas = [
+			new Position(x = 5, y = 4),
+			new Position(x = 4, y = 4),
+			new Position(x = 3, y = 4),
+			new Position(x = 2, y = 4)
+		].map({ posicion => self.dibujar(new MetaVioleta(position = posicion)) })
     }
 
 }
