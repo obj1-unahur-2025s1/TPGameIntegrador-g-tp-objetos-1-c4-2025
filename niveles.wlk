@@ -1,5 +1,6 @@
 import sokoban.*
 import inicioYTeclado.* 
+import paredesYCajas.*
 class Nivel{
   const property siguienteNivel
 
@@ -34,7 +35,7 @@ class Nivel{
 			{ n => posicionesParedes.add(new Position(x = ancho, y = n)) }
 		)
 
-		posicionesParedes.forEach({ posicionParedes => self.dibujar(new Pared(position = posicionParedes)) })
+		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
   }
     
 
@@ -65,7 +66,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 			]
 		)
 
-		posicionesParedes.forEach({ posicionParedes => self.dibujar(new Pared(position = posicionParedes)) })
+		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
     }
 
 }
