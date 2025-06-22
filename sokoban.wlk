@@ -9,6 +9,7 @@ object juegoSokoban{
     game.title("Sokoban")
 	game.height(20)
 	game.width(30)
+	game.cellSize(64)
 	game.boardGround("Ground_Concrete.png")
     pantallaInicio.cargar()
   }

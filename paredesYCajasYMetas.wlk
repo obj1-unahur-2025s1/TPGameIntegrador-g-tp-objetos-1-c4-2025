@@ -6,10 +6,10 @@ class Pared {
 	method image ()
 	method position() = position
 	method mover(direccion) {
-		self.error("no podes mover las paredes")
+		self.error("No podes mover las paredes")
 	}
 	//Colision
-  	method esPisable() = false
+  	method esPisable(_) = false
 	
 }
 
@@ -28,27 +28,34 @@ class ParedMarron inherits Pared {
 
 class Caja {
     var property position 
+	const property llegadas
+
     method image() 
-    method position() = position 
+    method position() = position
 	method mover(direccion) {
 		self.validarLugarLibre(direccion)
 		position = direccion.siguiente(position)
 	}
+
 	method validarLugarLibre(direccion) {
 		const posAlLado = direccion.siguiente(position)
-		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable()}
+		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)}
 		)
 		if (!lugarLibre) {
 			throw new Exception(message = "Algo traba la caja.")
 		}
 } 
-	method esPisable() = false
+	method esPisable(_) = false
+
+	method estaEnLaMeta() = llegadas.any({ llegada => llegada.position() == position })
 }
 class CajaBeige inherits Caja{
     override method image() = "Crate_Beige.png"
+	
 }
 class CajaNegra inherits Caja {
-    override method image() = "Crate_Black.png"
+    override method image() = if (self.estaEnLaMeta()) "CrateDark_Black.png" else "Crate_Black.png"
+
 }
 class CajaMarron inherits Caja {
     override method image() = "Crate_Brown.png"
@@ -57,13 +64,8 @@ class CajaMarron inherits Caja {
 class Meta {
 	const property position
 	method mover(direccion) {  }
-	method esPisable() = true
+	method esPisable(_) = true
 	method image()
-	method llegada() {
-		game.clear()
-		pantallaEntreNiveles.cargar()
-		
-		}
 }
 class MetaAzul inherits Meta{
     override method image() = "EndPoint_Blue.png"

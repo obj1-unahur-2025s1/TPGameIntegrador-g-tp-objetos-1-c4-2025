@@ -50,7 +50,6 @@ class Nivel{
 		return dibujo
 	}
 
-    
 }
 
 
@@ -276,9 +275,16 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 			new Position(x = 11, y = 9),
 			new Position(x = 14, y = 14),
 			new Position(x = 27, y = 11)
-		].map({ posicion => self.dibujar(new CajaNegra(position = posicion)) })
+		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })
     }
+
+	method nivelSuperado(cajas) {
+		if (cajas.all({ caja => caja.estaEnLaMeta() }))
+			game.clear()
+			pantallaEntreNiveles.cargar()
+	}
 }
+
 object pantallaEntreNiveles {
 	method image() = "nivelSuperado.png"
 	method cargar() {
