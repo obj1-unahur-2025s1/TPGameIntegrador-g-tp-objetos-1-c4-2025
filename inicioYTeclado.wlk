@@ -2,8 +2,8 @@ import niveles.*
 import sokoban.*
 
 object pantallaInicio {
-  const position = game.at(0,0)
-  method image() = "pantallaDeInicio.png"
+  const position = game.at(2,2)
+  method image() = "pantallaDeInicio2.png"
   method position() = position
   method cargar() {
     game.addVisual(self)
@@ -12,6 +12,16 @@ object pantallaInicio {
   }
 
 }
+object instrucciones {
+  method position() = game.at(3,2)
+  method image() = "instrucciones.png"
+  method cargar() {
+    game.addVisual(self)
+  }
+  method salir() {
+    game.removeVisual(self)
+  }
+}
 
 object teclado{
   method iniciar(){ 
@@ -19,5 +29,7 @@ object teclado{
 		keyboard.down().onPressDo({ personaje.moverAbajo() })
 		keyboard.left().onPressDo({ personaje.moverIzquierda() })
 		keyboard.right().onPressDo({ personaje.moverDerecha() })
+    keyboard.i().onPressDo({instrucciones.cargar()})
+    keyboard.b().onPressDo({instrucciones.salir()})
   }
 }

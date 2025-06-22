@@ -286,6 +286,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 }
 
 object pantallaEntreNiveles {
+	method position() = game.origin()
 	method image() = "nivelSuperado.png"
 	method cargar() {
 		game.addVisual(self)
