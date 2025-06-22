@@ -36,9 +36,6 @@ object personaje {
 			throw e
 		}
   	}
-	method llegar(unaMeta) {
-		unaMeta.llegada()
-	}
 
 	method retroceder() {
 		position = direccion.opuesto().siguiente(position)
