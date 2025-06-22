@@ -36,6 +36,7 @@ class Nivel{
 		)
 
 		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
+		game.onCollideDo(personaje, {unaCaja=>personaje.empujar(unaCaja)})
   }
     
 
@@ -48,6 +49,7 @@ class Nivel{
 		game.addVisual(dibujo)
 		return dibujo
 	}
+
     
 }
 
@@ -276,6 +278,16 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 			new Position(x = 27, y = 11)
 		].map({ posicion => self.dibujar(new CajaNegra(position = posicion)) })
     }
+}
+object pantallaEntreNiveles {
+	method image() = "nivelSuperado.png"
+	method cargar() {
+		game.addVisual(self)
+		keyboard.enter().onPressDo({
+									game.removeVisual(self)})
+									juegoSokoban.siguienteNivel()
+	}
+
 }
 
 object nivel2 inherits Nivel (siguienteNivel = nivel1){ //agregar nivel 3 o pantalla final

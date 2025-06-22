@@ -28,8 +28,16 @@ object personaje {
 
 
   	method empujar(unElemento){
-    	unElemento.mover()
+    	try
+			unElemento.mover(direccion)
+		catch e {
+			self.retroceder()
+			throw e
+		}
   	}
+	method llegar(unaMeta) {
+		unaMeta.llegada()
+	}
 
 	method retroceder() {
 		position = direccion.opuesto().siguiente(position)

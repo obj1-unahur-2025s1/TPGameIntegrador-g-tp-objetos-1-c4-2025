@@ -19,5 +19,6 @@ object teclado{
 		keyboard.down().onPressDo({ personaje.moverAbajo() })
 		keyboard.left().onPressDo({ personaje.moverIzquierda() })
 		keyboard.right().onPressDo({ personaje.moverDerecha() })
+    keyboard.h().onPressDo({game.uniqueCollider(personaje).llegada()})
   }
 }

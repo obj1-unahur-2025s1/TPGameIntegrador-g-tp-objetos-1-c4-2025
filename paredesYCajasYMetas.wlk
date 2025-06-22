@@ -1,12 +1,16 @@
+import niveles.*
 import wollok.game.*
 import sokoban.*
 class Pared {
-	const property position
+	var property position
 	method image ()
 	method position() = position
-	method mover(direccion) {}
+	method mover(direccion) {
+		self.error("no podes mover las paredes")
+	}
 	//Colision
   	method esPisable() = false
+	
 }
 
 class ParedNegra inherits Pared {
@@ -26,7 +30,18 @@ class Caja {
     var property position 
     method image() 
     method position() = position 
-	method mover(direccion) {}
+	method mover(direccion) {
+		self.validarLugarLibre(direccion)
+		position = direccion.siguiente(position)
+	}
+	method validarLugarLibre(direccion) {
+		const posAlLado = direccion.siguiente(position)
+		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable()}
+		)
+		if (!lugarLibre) {
+			throw new Exception(message = "Algo traba la caja.")
+		}
+} 
 	method esPisable() = false
 }
 class CajaBeige inherits Caja{
@@ -41,11 +56,15 @@ class CajaMarron inherits Caja {
 
 class Meta {
 	const property position
-	method mover(direccion) { }
+	method mover(direccion) {  }
 	method esPisable() = true
 	method image()
+	method llegada() {
+		game.clear()
+		pantallaEntreNiveles.cargar()
+		
+		}
 }
-
 class MetaAzul inherits Meta{
     override method image() = "EndPoint_Blue.png"
 }
