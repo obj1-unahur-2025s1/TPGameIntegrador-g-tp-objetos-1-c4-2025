@@ -57,7 +57,9 @@ class Nivel{
 
 object nivel1 inherits Nivel (siguienteNivel = nivel2){
 	const posicionesParedes = []
-	
+	const metas = []
+	const cajas = []
+
     override method iniciar(){
 		super()
 		game.boardGround("Ground_Concrete.png")
@@ -264,26 +266,25 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
 
 		//donde hay que ubicar las cajas
-		const metas = [
-			new Position(x = 4, y = 15),
+		metas.addAll([new Position(x = 4, y = 15),
 			new Position(x = 11, y = 18),
 			new Position(x = 17, y = 11),
 			new Position(x = 27, y = 17),
 			new Position(x = 28, y = 3)
-		].map({ posicion => self.dibujar(new MetaVioleta(position = posicion)) })
-
+		].map({ posicion => self.dibujar(new MetaVioleta(position = posicion)) }))
+			
 		//cajas
-		const cajas = [
+		cajas.addAll([
 			new Position(x = 3, y = 2),
 			new Position(x = 18, y = 4),
 			new Position(x = 11, y = 9),
 			new Position(x = 14, y = 14),
 			new Position(x = 27, y = 11)
-		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })
+		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })) 
     }
 
-	method nivelSuperado(cajas) {
-		if (cajas.all({ caja => caja.estaEnLaMeta() }))
+	method nivelSuperado(unasCajas) {
+		if (unasCajas.all({ caja => caja.estaEnLaMeta() }))
 			game.clear()
 			pantallaEntreNiveles.cargar()
 	}
