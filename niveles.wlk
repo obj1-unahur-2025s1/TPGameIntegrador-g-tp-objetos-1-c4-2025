@@ -301,9 +301,8 @@ object pantallaEntreNiveles {
 
 }
 
-object nivel2 inherits Nivel (siguienteNivel = nivel1){ //agregar nivel 3 o pantalla final
+object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pantalla final
 	  const posicionesParedesGrises = [ ]
-	  const posicionesParedesNegras = []
 
     override method iniciar(){
       super()

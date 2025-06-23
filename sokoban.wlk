@@ -3,7 +3,7 @@ import niveles.*
 import inicioYTeclado.*
 
 object juegoSokoban{
-  var property nivelActual = nivel2
+  var property nivelActual = nivel1
 
   method iniciar(){
     game.title("Sokoban")
