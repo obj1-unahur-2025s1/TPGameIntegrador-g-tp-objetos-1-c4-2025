@@ -41,8 +41,8 @@ class Caja {
 		const posAlLado = direccion.siguiente(position)
 		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)}
 		)
-		if (!lugarLibre) {
-			throw new Exception(message = "Algo traba la caja.")
+		if (not lugarLibre) {
+			self.error("Algo traba la caja.")
 		}
 } 
 	method esPisable(_) = false
