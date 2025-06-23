@@ -6,6 +6,7 @@ class Nivel{
 
   method iniciar() {
     game.addVisual(personaje)
+	
 	teclado.iniciar()
     keyboard.r().onPressDo({ self.restart() })
 
@@ -55,8 +56,10 @@ class Nivel{
 
 object nivel1 inherits Nivel (siguienteNivel = nivel2){
 	const posicionesParedes = []
+	
     override method iniciar(){
 		super()
+		game.boardGround("Ground_Concrete.png")
 
 		//paredes propias del nivel
       	posicionesParedes.addAll(
@@ -298,8 +301,232 @@ object pantallaEntreNiveles {
 }
 
 object nivel2 inherits Nivel (siguienteNivel = nivel1){ //agregar nivel 3 o pantalla final
+	  const posicionesParedesGrises = [ ]
+	  const posicionesParedesNegras = []
+
     override method iniciar(){
       super()
+	  game.boardGround("GroundGravel_Grass.png")
+	  posicionesParedesGrises.addAll(
+			[
+				new Position(x = 9, y = 1),
+				new Position(x = 18, y = 1),
+				new Position(x = 24, y = 1),
+				new Position(x = 28, y = 1),
+				new Position(x = 4, y = 2),
+				new Position(x = 7, y = 2),
+				new Position(x = 9, y = 3),
+				new Position(x = 8, y = 3),
+				new Position(x = 17, y = 3),
+				new Position(x = 18, y = 3),
+				new Position(x = 19, y = 3),
+				new Position(x = 24, y = 3),
+				new Position(x = 1, y = 4),
+				new Position(x = 2, y = 4),
+				new Position(x = 3, y = 4),
+				new Position(x = 9, y = 4),
+				new Position(x = 11, y = 4),
+				new Position(x = 17, y = 4),
+				new Position(x = 18, y = 4),
+				new Position(x = 19, y = 4),
+				new Position(x = 20, y = 4),
+				new Position(x = 21, y = 4),
+				new Position(x = 22, y = 4),
+				new Position(x = 1, y = 5),
+				new Position(x = 2, y = 5),
+				new Position(x = 3, y = 5),
+				new Position(x = 6, y = 5),
+				new Position(x = 13, y = 5),
+				new Position(x = 18, y = 5),
+				new Position(x = 4, y = 6),
+				new Position(x = 6, y = 6),
+				new Position(x = 7, y = 6),
+				new Position(x = 9, y = 6),
+				new Position(x = 10, y = 6),
+				new Position(x = 13, y = 6),
+				new Position(x = 14, y = 6),
+				new Position(x = 17, y = 6),
+				new Position(x = 19, y = 6),
+				new Position(x = 22, y = 6),
+				new Position(x = 23, y = 6),
+				new Position(x = 4, y = 7),
+				new Position(x = 8, y = 7),
+				new Position(x = 9, y = 7),
+				new Position(x = 17, y = 7),
+				new Position(x = 18, y = 7),
+				new Position(x = 22, y = 7),
+				new Position(x = 23, y = 7),
+				new Position(x = 29, y = 7),
+				new Position(x = 25, y = 7),
+				new Position(x = 26, y = 7),
+				new Position(x = 27, y = 7),
+				new Position(x = 1, y = 8),
+				new Position(x = 9, y = 8),
+				new Position(x = 10, y = 8),
+				new Position(x = 13, y = 8),
+				new Position(x = 18, y = 8),
+				new Position(x = 23, y = 8),
+				new Position(x = 24, y = 8),
+				new Position(x = 25, y = 8),
+				new Position(x = 26, y = 8),
+				new Position(x = 27, y = 8),
+				new Position(x = 28, y = 8),
+				new Position(x = 1, y = 9),
+				new Position(x = 4, y = 9),
+				new Position(x = 5, y = 9),
+				new Position(x = 6, y = 9),
+				new Position(x = 7, y = 9),
+				new Position(x = 9, y = 9),
+				new Position(x = 10, y = 9),
+				new Position(x = 12, y = 9),
+				new Position(x = 13, y = 9),
+				new Position(x = 14, y = 9),
+				new Position(x = 16, y = 9),
+				new Position(x = 23, y = 9),
+				new Position(x = 24, y = 9),
+				new Position(x = 25, y = 9),
+				new Position(x = 26, y = 9),
+				new Position(x = 27, y = 9),
+				new Position(x = 28, y = 9),
+				new Position(x = 1, y = 10),
+				new Position(x = 5, y = 10),
+				new Position(x = 6, y = 10),
+				new Position(x = 10, y = 10),
+				new Position(x = 12, y = 10),
+				new Position(x = 18, y = 10),
+				new Position(x = 25, y = 10),
+				new Position(x = 26, y = 10),
+				new Position(x = 27, y = 10),
+				new Position(x = 28, y = 10),
+				new Position(x = 1, y = 11),
+				new Position(x = 2, y = 11),
+				new Position(x = 5, y = 11),
+				new Position(x = 6, y = 11),
+				new Position(x = 7, y = 11),
+				new Position(x = 8, y = 11),
+				new Position(x = 10, y = 11),
+				new Position(x = 14, y = 11),
+				new Position(x = 16, y = 11),
+				new Position(x = 18, y = 11),
+				new Position(x = 19, y = 11),
+				new Position(x = 20, y = 11),
+				new Position(x = 22, y = 11),
+				new Position(x = 1, y = 12),
+				new Position(x = 10, y = 12),
+				new Position(x = 16, y = 12),
+				new Position(x = 17, y = 12),
+				new Position(x = 18, y = 12),
+				new Position(x = 22, y = 12),
+				new Position(x = 25, y = 12),
+				new Position(x = 26, y = 12),
+				new Position(x = 1, y = 13),
+				new Position(x = 5, y = 13),
+				new Position(x = 6, y = 13),
+				new Position(x = 7, y = 13),
+				new Position(x = 8, y = 13),
+				new Position(x = 15, y = 13),
+				new Position(x = 16, y = 13),
+				new Position(x = 17, y = 13),
+				new Position(x = 18, y = 13),
+				new Position(x = 21, y = 13),
+				new Position(x = 24, y = 13),
+				new Position(x = 25, y = 13),
+				new Position(x = 26, y = 13),
+				new Position(x = 1, y = 14),
+				new Position(x = 2, y = 14),
+				new Position(x = 3, y = 14),
+				new Position(x = 4, y = 14),
+				new Position(x = 5, y = 14),
+				new Position(x = 6, y = 14),
+				new Position(x = 7, y = 14),
+				new Position(x = 8, y = 14),
+				new Position(x = 10, y = 14),
+				new Position(x = 11, y = 14),
+				new Position(x = 12, y = 14),
+				new Position(x = 21, y = 14),
+				new Position(x = 24, y = 14),
+				new Position(x = 1, y = 15),
+				new Position(x = 2, y = 15),
+				new Position(x = 3, y = 15),
+				new Position(x = 11, y = 15),
+				new Position(x = 12, y = 15),
+				new Position(x = 13, y = 15),
+				new Position(x = 16, y = 15),
+				new Position(x = 21, y = 15),
+				new Position(x = 24, y = 15),
+				new Position(x = 26, y = 15),
+				new Position(x = 28, y = 15),
+				new Position(x = 1, y = 16),
+				new Position(x = 2, y = 16),
+				new Position(x = 3, y = 16),
+				new Position(x = 4, y = 16),
+				new Position(x = 8, y = 16),
+				new Position(x = 9, y = 16),
+				new Position(x = 12, y = 16),
+				new Position(x = 13, y = 16),
+				new Position(x = 14, y = 16),
+				new Position(x = 15, y = 16),
+				new Position(x = 16, y = 16),
+				new Position(x = 18, y = 16),
+				new Position(x = 26, y = 16),
+				new Position(x = 1, y = 17),
+				new Position(x = 1, y = 17),
+				new Position(x = 2, y = 17),
+				new Position(x = 3, y = 17),
+				new Position(x = 4, y = 17),
+				new Position(x = 5, y = 17),
+				new Position(x = 6, y = 17),
+				new Position(x = 7, y = 17),
+				new Position(x = 8, y = 17),
+				new Position(x = 9, y = 17),
+				new Position(x = 21, y = 17),
+				new Position(x = 23, y = 17),
+				new Position(x = 1, y = 18),
+				new Position(x = 1, y = 18),
+				new Position(x = 2, y = 18),
+				new Position(x = 3, y = 18),
+				new Position(x = 4, y = 18),
+				new Position(x = 5, y = 18),
+				new Position(x = 6, y = 18),
+				new Position(x = 7, y = 18),
+				new Position(x = 8, y = 18),
+				new Position(x = 9, y = 18),
+				new Position(x = 13, y = 18),
+				new Position(x = 14, y = 18),
+				new Position(x = 19, y = 18),
+				new Position(x = 24, y = 18),
+				new Position(x = 25, y = 18),
+				new Position(x = 26, y = 18),
+				new Position(x = 26, y = 5), 
+				new Position(x = 27, y = 5), 
+				new Position(x = 27, y = 18),
+				new Position(x = game.width() - 2, y = game.height() - 2)
+			])
+			posicionesParedesGrises.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
+
+	//donde hay que ubicar las cajas
+		const metas = [
+			new Position(x = 4, y = 8),
+			new Position(x = 10, y = 18),
+			new Position(x = 13, y = 10),
+			new Position(x = 27, y = 17),
+			new Position(x = 27, y = 1)
+		].map({ posicion => self.dibujar(new MetaAzul(position = posicion)) })
+
+		//cajas
+		const cajas = [
+			new Position(x = 4, y = 12),
+			new Position(x = 11, y = 9),
+			new Position(x = 17, y = 14),
+			new Position(x = 20, y = 8),
+			new Position(x = 23, y = 13)
+		].map({ posicion => self.dibujar(new CajaMarron(position = posicion, llegadas = metas)) })
     }
+	
+	method nivelSuperado(cajas) {
+		if (cajas.all({ caja => caja.estaEnLaMeta() }))
+			game.clear()
+			pantallaEntreNiveles.cargar()
+	}
 
 }

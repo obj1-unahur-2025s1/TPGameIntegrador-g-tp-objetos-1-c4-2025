@@ -8,7 +8,7 @@ object pantallaInicio {
   method cargar() {
     game.addVisual(self)
     keyboard.enter().onPressDo({game.removeVisual(self)
-                                nivel1.iniciar()})
+                                juegoSokoban.nivelActual().iniciar()})
   }
 
 }

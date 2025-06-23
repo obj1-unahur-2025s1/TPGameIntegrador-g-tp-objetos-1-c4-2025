@@ -22,6 +22,6 @@ Objetivo: Empujar todas las cajas hasta las metas. Una vez que todas las cajas e
 
 ## Otros
 
-- Curso/Facultad = Universidad Nacional de Hurlingham
+- Facultad = Universidad Nacional de Hurlingham
 - Versión de wollok = 4.0.0
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público .

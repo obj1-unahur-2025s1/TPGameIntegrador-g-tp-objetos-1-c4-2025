@@ -3,14 +3,14 @@ import niveles.*
 import inicioYTeclado.*
 
 object juegoSokoban{
-  var property nivelActual = nivel1
+  var property nivelActual = nivel2
 
   method iniciar(){
     game.title("Sokoban")
 	game.height(20)
 	game.width(30)
 	game.cellSize(64)
-	game.boardGround("Ground_Concrete.png")
+	
     pantallaInicio.cargar()
   }
 
