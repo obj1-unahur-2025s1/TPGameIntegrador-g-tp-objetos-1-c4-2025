@@ -12,8 +12,8 @@ class Nivel{
     game.addVisual(personaje)
 	
 	teclado.iniciar()
-    keyboard.r().onPressDo({ self.restart() })
-	keyboard.g().onPressDo({self.nivelSuperado(cajas)})
+    	keyboard.r().onPressDo({ self.restart() })
+	//keyboard.g().onPressDo({self.nivelSuperado(cajas)})
 	//Mirar comentario del metodo nivelSuperado(x)
 
 		//	PAREDES
