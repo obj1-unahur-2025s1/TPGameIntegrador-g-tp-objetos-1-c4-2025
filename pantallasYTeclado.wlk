@@ -8,10 +8,29 @@ object pantallaInicio {
   method cargar() {
     game.addVisual(self)
     keyboard.enter().onPressDo({game.removeVisual(self)
-                                nivel1.iniciar()})
+                                juegoSokoban.nivelActual().iniciar()})
+    keyboard.i().onPressDo({instrucciones.cargar()})
+    keyboard.b().onPressDo({instrucciones.salir()})
   }
 
 }
+
+object pantallaEntreNiveles {
+	method position() = game.origin()
+	method image() = "nivelSuperado.png"
+	method cargar() {
+		game.addVisual(self)
+		keyboard.enter().onPressDo({
+									game.removeVisual(self)})
+									juegoSokoban.siguienteNivel()
+	}
+
+}
+
+object pantallaFinal {
+	
+}
+
 object instrucciones {
   method position() = game.at(3,2)
   method image() = "instrucciones.png"

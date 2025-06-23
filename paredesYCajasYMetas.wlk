@@ -29,6 +29,7 @@ class ParedMarron inherits Pared {
 class Caja {
     var property position 
 	const property llegadas
+	
 
     method image() 
     method position() = position
@@ -39,7 +40,7 @@ class Caja {
 
 	method validarLugarLibre(direccion) {
 		const posAlLado = direccion.siguiente(position)
-		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)}
+		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)} //Devuelve todos los objetos en la posición dada.
 		)
 		if (not lugarLibre) {
 			self.error("Algo traba la caja.")
@@ -58,7 +59,7 @@ class CajaNegra inherits Caja {
 
 }
 class CajaMarron inherits Caja {
-    override method image() = "Crate_Brown.png"
+    override method image() = if(self.estaEnLaMeta()) "CrateDark_Brown.png" else "Crate_Brown.png"
 }
 
 class Meta {
