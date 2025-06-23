@@ -530,3 +530,11 @@ object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pant
 	}
 
 }
+object nivel3 inherits Nivel (siguienteNivel = pantallaFinal) {
+	override method iniciar() {
+		super()
+	}
+}
+object pantallaFinal {
+	
+}
