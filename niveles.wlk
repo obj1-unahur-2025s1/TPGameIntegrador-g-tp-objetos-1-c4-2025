@@ -43,6 +43,7 @@ class Nivel{
   method restart() {
 		game.clear()
 		self.iniciar()
+		personaje.position(game.at(4, 3))
 	}
     
   method dibujar(dibujo) {
