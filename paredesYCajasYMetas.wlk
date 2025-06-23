@@ -29,6 +29,7 @@ class ParedMarron inherits Pared {
 class Caja {
     var property position 
 	const property llegadas
+	
 
     method image() 
     method position() = position
@@ -58,7 +59,7 @@ class CajaNegra inherits Caja {
 
 }
 class CajaMarron inherits Caja {
-    override method image() = "Crate_Brown.png"
+    override method image() = if(self.estaEnLaMeta()) "CrateDark_Brown.png" else "Crate_Black.png"
 }
 
 class Meta {
