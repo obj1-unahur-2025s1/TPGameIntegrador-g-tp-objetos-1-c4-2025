@@ -1,5 +1,5 @@
 import sokoban.*
-import inicioYTeclado.* 
+import pantallasYTeclado.* 
 import paredesYCajasYMetas.*
 class Nivel{
   const property siguienteNivel
@@ -289,17 +289,6 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 	}
 }
 
-object pantallaEntreNiveles {
-	method position() = game.origin()
-	method image() = "nivelSuperado.png"
-	method cargar() {
-		game.addVisual(self)
-		keyboard.enter().onPressDo({
-									game.removeVisual(self)})
-									juegoSokoban.siguienteNivel()
-	}
-
-}
 
 object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pantalla final
 	  const posicionesParedesGrises = [ ]
@@ -534,7 +523,4 @@ object nivel3 inherits Nivel (siguienteNivel = pantallaFinal) {
 	override method iniciar() {
 		super()
 	}
-}
-object pantallaFinal {
-	
 }

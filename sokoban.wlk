@@ -1,6 +1,6 @@
 import wollok.game.*
 import niveles.*
-import inicioYTeclado.*
+import pantallasYTeclado.*
 
 object juegoSokoban{
   var property nivelActual = nivel1
@@ -10,7 +10,6 @@ object juegoSokoban{
 	game.height(20)
 	game.width(30)
 	game.cellSize(64)
-	
     pantallaInicio.cargar()
   }
 

@@ -40,7 +40,7 @@ class Caja {
 
 	method validarLugarLibre(direccion) {
 		const posAlLado = direccion.siguiente(position)
-		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)}
+		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)} //Devuelve todos los objetos en la posición dada.
 		)
 		if (!lugarLibre) {
 			throw new Exception(message = "Algo traba la caja.")
@@ -59,7 +59,7 @@ class CajaNegra inherits Caja {
 
 }
 class CajaMarron inherits Caja {
-    override method image() = if(self.estaEnLaMeta()) "CrateDark_Brown.png" else "Crate_Black.png"
+    override method image() = if(self.estaEnLaMeta()) "CrateDark_Brown.png" else "Crate_Brown.png"
 }
 
 class Meta {
