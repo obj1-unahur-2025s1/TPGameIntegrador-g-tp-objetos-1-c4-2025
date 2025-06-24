@@ -1,11 +1,11 @@
-# SOKOBAN
+# WOLLOKOBAN
 
 ## Equipo de desarrollo
 
 - Rios Julieta Carolina
 - 
 -
-- 
+- Benítez Alan David
 
 ## Capturas
 
@@ -13,7 +13,7 @@
 
 ## Reglas de Juego / Instrucciones
 
-Objetivo: Empujar todas las cajas hasta las metas. Una vez que todas las cajas estén posicionadas, el nivel será completado. 
+Objetivo: El juego consiste en empujar todas las cajas hasta las metas. Una vez que todas las cajas estén posicionadas, el nivel será completado. ¡Intenta completar todos los niveles!
 
 ## Controles:
  1) Utiliza las flechas del teclado para mover al personaje.

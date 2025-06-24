@@ -1,3 +1,4 @@
+import animacionYSonido.*
 import niveles.*
 import sokoban.*
 
@@ -8,7 +9,9 @@ object pantallaInicio {
   method cargar() {
     game.addVisual(self)
     keyboard.enter().onPressDo({game.removeVisual(self)
-                                juegoSokoban.nivelActual().iniciar()})
+                                juegoSokoban.nivelActual().iniciar()
+                                sonido.reproducir()
+                                })
     keyboard.i().onPressDo({instrucciones.cargar()})
     keyboard.b().onPressDo({instrucciones.salir()})
   }
@@ -43,6 +46,7 @@ object juegoCompletado {
   method position() = game.origin()
   method cargar() {
     game.clear()
+    sonido.parar()
     game.addVisual(self)
     keyboard.enter().onPressDo({nivel1.iniciar()
                               game.removeVisual(self)})
@@ -59,6 +63,7 @@ object teclado{
     keyboard.i().onPressDo({instrucciones.cargar()})
     keyboard.b().onPressDo({instrucciones.salir()})
     keyboard.g().onPressDo({if(juegoSokoban.nivelActual().cajas().all({c=>c.estaEnLaMeta()})) juegoSokoban.nivelActual().nivelSuperado()})
-
+    keyboard.minusKey().onPressDo({ sonido.disminuirVolumen() })
+		keyboard.plusKey().onPressDo({ sonido.aumentarVolumen() })
   }
 }

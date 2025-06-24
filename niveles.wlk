@@ -5,12 +5,13 @@ class Nivel{
 
   const property siguienteNivel
   const posicionesParedes = []
-  const metas = []
+  const property metas = []
   const property cajas = []
   
   method iniciar() {
     game.addVisual(personaje)
 	personaje.position(game.at(4, 3))
+	game.onTick(500, "animacion", {personaje.siguienteFrame()})
 	teclado.iniciar()
     	keyboard.r().onPressDo({ self.restart() })
 

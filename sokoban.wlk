@@ -1,6 +1,7 @@
 import wollok.game.*
 import niveles.*
 import pantallasYTeclado.*
+import animacionYSonido.*
 
 object juegoSokoban{
   var property nivelActual = nivel1
@@ -10,6 +11,7 @@ object juegoSokoban{
 	game.height(20)
 	game.width(30)
 	game.cellSize(64)
+	sonido.cargar()
     pantallaInicio.cargar()
   }
 
@@ -22,10 +24,14 @@ object juegoSokoban{
 object personaje {
 	var property position = game.at(4, 3)
 	var direccion = derecha
-  	var image = "Character5.png"
+  	var image = "Character4.png"
 
 	method image() = image
 
+	method siguienteFrame() {
+		direccion.siguienteFrame()
+		image = direccion.imagen()
+	}
 
   	method empujar(unElemento){
     	try
@@ -42,25 +48,21 @@ object personaje {
  
 	method moverArriba() {
 		direccion = arriba
-    	image = "Character8.png"
 		self.avanzar()
 	}
 
 	method moverAbajo() {
 		direccion = abajo
-    	image = "Character6.png"
 		self.avanzar()
 	}
 
 	method moverIzquierda() {
 		direccion = izquierda
-    	image = "Character10.png"
 		self.avanzar()
 	}
 
 	method moverDerecha() {
 		direccion = derecha
-    	image = "Character3.png"
 		self.avanzar()
 	}
 	
@@ -81,20 +83,36 @@ class Direccion {
 object izquierda inherits Direccion { 
 	override method siguiente(position) = position.left(1) 
 	method opuesto() = derecha
+	method imagen() = frameIzquierda.image()
+	method siguienteFrame() {
+		frameIzquierda.siguienteImage()
+	}
 }
 
 object derecha inherits Direccion { 
 	override method siguiente(position) = position.right(1) 
 	method opuesto() = izquierda
+	method imagen() = frameDerecha.image()
+	method siguienteFrame() {
+		frameDerecha.siguienteImage()
+	}
 }
 
 object abajo inherits Direccion { 
 	override method siguiente(position) = position.down(1) 
 	method opuesto() = arriba
+	method imagen() = frameAbajo.image()
+	method siguienteFrame() {
+		frameAbajo.siguienteImage()
+	}
 }
 
 object arriba inherits Direccion { 
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
+	method imagen() = frameArriba.image()
+	method siguienteFrame() {
+		frameArriba.siguienteImage()
+	}
 }
 
