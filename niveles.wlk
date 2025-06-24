@@ -294,7 +294,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 }
 
 
-object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pantalla final
+object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ //agregar nivel 3 o pantalla final
 	//const posicionesParedesGrises = [ ]
 
     override method iniciar(){
@@ -519,9 +519,4 @@ object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pant
     }
 	
 	
-}
-object nivel3 inherits Nivel (siguienteNivel = pantallaFinal) {
-	override method iniciar() {
-		super()
-	}
 }
