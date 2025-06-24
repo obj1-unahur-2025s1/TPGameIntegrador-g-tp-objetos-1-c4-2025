@@ -78,13 +78,15 @@ object personaje {
 
 class Direccion {
 	method siguiente(position)
+	method imagen()
+	method siguienteFrame()
 }
 
 object izquierda inherits Direccion { 
 	override method siguiente(position) = position.left(1) 
 	method opuesto() = derecha
-	method imagen() = frameIzquierda.image()
-	method siguienteFrame() {
+	override method imagen() = frameIzquierda.image()
+	override method siguienteFrame() {
 		frameIzquierda.siguienteImage()
 	}
 }
@@ -92,8 +94,8 @@ object izquierda inherits Direccion {
 object derecha inherits Direccion { 
 	override method siguiente(position) = position.right(1) 
 	method opuesto() = izquierda
-	method imagen() = frameDerecha.image()
-	method siguienteFrame() {
+	override method imagen() = frameDerecha.image()
+	override method siguienteFrame() {
 		frameDerecha.siguienteImage()
 	}
 }
@@ -101,8 +103,8 @@ object derecha inherits Direccion {
 object abajo inherits Direccion { 
 	override method siguiente(position) = position.down(1) 
 	method opuesto() = arriba
-	method imagen() = frameAbajo.image()
-	method siguienteFrame() {
+	override method imagen() = frameAbajo.image()
+	override method siguienteFrame() {
 		frameAbajo.siguienteImage()
 	}
 }
@@ -110,8 +112,8 @@ object abajo inherits Direccion {
 object arriba inherits Direccion { 
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
-	method imagen() = frameArriba.image()
-	method siguienteFrame() {
+	override method imagen() = frameArriba.image()
+	override method siguienteFrame() {
 		frameArriba.siguienteImage()
 	}
 }
