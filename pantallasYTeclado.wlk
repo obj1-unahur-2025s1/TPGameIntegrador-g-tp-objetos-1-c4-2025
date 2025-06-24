@@ -21,8 +21,8 @@ object pantallaEntreNiveles {
 	method cargar() {
 		game.addVisual(self)
 		keyboard.enter().onPressDo({
-									game.removeVisual(self)})
 									juegoSokoban.siguienteNivel()
+                  game.removeVisual(self)})
 	}
 
 }
