@@ -50,5 +50,6 @@ object teclado{
 		keyboard.right().onPressDo({ personaje.moverDerecha() })
     keyboard.i().onPressDo({instrucciones.cargar()})
     keyboard.b().onPressDo({instrucciones.salir()})
+    keyboard.g().onPressDo({if(juegoSokoban.nivelActual().cajas().all({c=>c.estaEnLaMeta()})) juegoSokoban.nivelActual().nivelSuperado()})
   }
 }

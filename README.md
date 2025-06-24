@@ -18,6 +18,7 @@ Objetivo: Empujar todas las cajas hasta las metas. Una vez que todas las cajas e
  1) Utiliza las flechas del teclado para mover al personaje.
  2) Mirá las instrucciones con `I`, y cerralas con `B`. 
  3) Reiniciá el juego con la tecla `R`.
+ 4) Una vez que posiciones todas las cajas en las metas, presiona la tecla `G` para terminar el nivel. Si presionas la tecla `G` y las cajas no esán posicionadas, no pasará nada.
 
 
 ## Otros

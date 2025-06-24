@@ -57,8 +57,8 @@ class Nivel{
 	}
 
   //Si gana, esta bien. Si no gana, devuelve la imagen de "Has pasado el nivel" aunque no lo hayas ganado. Cambiar.
-  method nivelSuperado(unasCajas) {
-		if (unasCajas.all({ caja => caja.estaEnLaMeta() }))
+  method nivelSuperado() {
+		if (cajas.all({ caja => caja.estaEnLaMeta() }))
 			game.clear()
 			pantallaEntreNiveles.cargar()
 	}
@@ -290,13 +290,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 			new Position(x = 27, y = 11)
 		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })) 
     }
-	/*
-	method nivelSuperado(unasCajas) {
-		if (unasCajas.all({ caja => caja.estaEnLaMeta() }))
-			game.clear()
-			pantallaEntreNiveles.cargar()
-	}
-	*/
+	
 }
 
 
@@ -523,13 +517,8 @@ object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pant
 			new Position(x = 23, y = 13)
 		].map({ posicion => self.dibujar(new CajaMarron(position = posicion, llegadas = metas)) }))
     }
-	/*
-	method nivelSuperado(unasCajas) {
-		if (unasCajas.all({ caja => caja.estaEnLaMeta() }))
-			game.clear()
-			pantallaEntreNiveles.cargar()
-	}
-	*/
+	
+	
 }
 object nivel3 inherits Nivel (siguienteNivel = pantallaFinal) {
 	override method iniciar() {
