@@ -32,8 +32,8 @@ object pantallaFinal {
 }
 
 object instrucciones {
-  method position() = game.at(3,2)
-  method image() = "instrucciones.png"
+  method position() = game.at(7,0)
+  method image() = "instruccionesNuevo2.png"
   method cargar() {
     game.addVisual(self)
   }
