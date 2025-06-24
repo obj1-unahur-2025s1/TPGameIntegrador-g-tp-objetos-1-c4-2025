@@ -2,19 +2,23 @@ import sokoban.*
 import pantallasYTeclado.* 
 import paredesYCajasYMetas.*
 class Nivel{
-  const property siguienteNivel
 
+  const property siguienteNivel
+  const posicionesParedes = []
+  const metas = []
+  const property cajas = []
+  
   method iniciar() {
     game.addVisual(personaje)
 	
 	teclado.iniciar()
-    keyboard.r().onPressDo({ self.restart() })
+    	keyboard.r().onPressDo({ self.restart() })
+	//keyboard.g().onPressDo({self.nivelSuperado(cajas)})
+	//Mirar comentario del metodo nivelSuperado(x)
 
 		//	PAREDES
 		const ancho = game.width() - 1
 		const largo = game.height() - 1
-		
-		const posicionesParedes = []
 
     // borde inferior
 		(0 .. ancho).forEach(
@@ -52,12 +56,18 @@ class Nivel{
 		return dibujo
 	}
 
+  //Si gana, esta bien. Si no gana, devuelve la imagen de "Has pasado el nivel" aunque no lo hayas ganado. Cambiar.
+  method nivelSuperado() {
+		if (cajas.all({ caja => caja.estaEnLaMeta() }))
+			game.clear()
+			pantallaEntreNiveles.cargar()
+	}
 }
 
 
 object nivel1 inherits Nivel (siguienteNivel = nivel2){
-	const posicionesParedes = []
-	
+	//const posicionesParedes = []
+
     override method iniciar(){
 		super()
 		game.boardGround("Ground_Concrete.png")
@@ -264,39 +274,34 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
 
 		//donde hay que ubicar las cajas
-		const metas = [
-			new Position(x = 4, y = 15),
+		metas.addAll([new Position(x = 4, y = 15),
 			new Position(x = 11, y = 18),
 			new Position(x = 17, y = 11),
 			new Position(x = 27, y = 17),
 			new Position(x = 28, y = 3)
-		].map({ posicion => self.dibujar(new MetaVioleta(position = posicion)) })
-
+		].map({ posicion => self.dibujar(new MetaVioleta(position = posicion)) }))
+			
 		//cajas
-		const cajas = [
+		cajas.addAll([
 			new Position(x = 3, y = 2),
 			new Position(x = 18, y = 4),
 			new Position(x = 11, y = 9),
 			new Position(x = 14, y = 14),
 			new Position(x = 27, y = 11)
-		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })
+		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) })) 
     }
-
-	method nivelSuperado(cajas) {
-		if (cajas.all({ caja => caja.estaEnLaMeta() }))
-			game.clear()
-			pantallaEntreNiveles.cargar()
-	}
+	
 }
 
 
-object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pantalla final
-	  const posicionesParedesGrises = [ ]
+object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ //agregar nivel 3 o pantalla final
+	//const posicionesParedesGrises = [ ]
 
     override method iniciar(){
       super()
 	  game.boardGround("GroundGravel_Grass.png")
-	  posicionesParedesGrises.addAll(
+	  //posicionesParedesGrises.addAll(
+	  posicionesParedes.addAll(
 			[
 				new Position(x = 9, y = 1),
 				new Position(x = 18, y = 1),
@@ -491,36 +496,27 @@ object nivel2 inherits Nivel (siguienteNivel = nivel3){ //agregar nivel 3 o pant
 				new Position(x = 27, y = 18),
 				new Position(x = game.width() - 2, y = game.height() - 2)
 			])
-			posicionesParedesGrises.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
+			//posicionesParedesGrises.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
+			posicionesParedes.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
 
 	//donde hay que ubicar las cajas
-		const metas = [
+		metas.addAll([
 			new Position(x = 4, y = 8),
 			new Position(x = 10, y = 18),
 			new Position(x = 13, y = 10),
 			new Position(x = 27, y = 17),
 			new Position(x = 27, y = 1)
-		].map({ posicion => self.dibujar(new MetaAzul(position = posicion)) })
+		].map({ posicion => self.dibujar(new MetaAzul(position = posicion)) }))
 
 		//cajas
-		const cajas = [
+		cajas.addAll([
 			new Position(x = 4, y = 12),
 			new Position(x = 11, y = 9),
 			new Position(x = 17, y = 14),
 			new Position(x = 20, y = 8),
 			new Position(x = 23, y = 13)
-		].map({ posicion => self.dibujar(new CajaMarron(position = posicion, llegadas = metas)) })
+		].map({ posicion => self.dibujar(new CajaMarron(position = posicion, llegadas = metas)) }))
     }
 	
-	method nivelSuperado(cajas) {
-		if (cajas.all({ caja => caja.estaEnLaMeta() }))
-			game.clear()
-			pantallaEntreNiveles.cargar()
-	}
-
-}
-object nivel3 inherits Nivel (siguienteNivel = pantallaFinal) {
-	override method iniciar() {
-		super()
-	}
+	
 }

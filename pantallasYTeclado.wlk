@@ -21,24 +21,32 @@ object pantallaEntreNiveles {
 	method cargar() {
 		game.addVisual(self)
 		keyboard.enter().onPressDo({
-									game.removeVisual(self)})
 									juegoSokoban.siguienteNivel()
+                  game.removeVisual(self)})
 	}
 
 }
 
-object pantallaFinal {
-	
-}
 
 object instrucciones {
-  method position() = game.at(3,2)
-  method image() = "instrucciones.png"
+  method position() = game.at(7,0)
+  method image() = "instruccionesNuevo2.png"
   method cargar() {
     game.addVisual(self)
   }
   method salir() {
     game.removeVisual(self)
+  }
+}
+object juegoCompletado {
+  method image() = "pantallaFinal.png"
+  method position() = game.at(2,2)
+  method iniciar() {
+    game.clear()
+    game.addVisual(self)
+    keyboard.enter().onPressDo({nivel1.iniciar()
+                              game.removeVisual(self)})
+
   }
 }
 
@@ -50,5 +58,7 @@ object teclado{
 		keyboard.right().onPressDo({ personaje.moverDerecha() })
     keyboard.i().onPressDo({instrucciones.cargar()})
     keyboard.b().onPressDo({instrucciones.salir()})
+    keyboard.g().onPressDo({if(juegoSokoban.nivelActual().cajas().all({c=>c.estaEnLaMeta()})) juegoSokoban.nivelActual().nivelSuperado()})
+
   }
 }
