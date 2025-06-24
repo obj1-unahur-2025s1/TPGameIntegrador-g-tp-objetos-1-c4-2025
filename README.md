@@ -8,7 +8,7 @@
 
 ## Capturas
 
-<img src="./sokobanGif.gif" width=400 />
+<img src="./sokobanGif.gif" width=900 />
 
 ## Reglas de Juego / Instrucciones
 
