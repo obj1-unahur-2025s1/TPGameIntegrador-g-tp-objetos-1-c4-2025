@@ -1,0 +1,67 @@
+import niveles.*
+import iniciarJuego.*
+import pantallasYTeclado.*
+import paredesYCajasYMetas.*
+import sokoban.*
+
+describe "Grupo de test para sokoban" {
+ 
+  test "Cuando se apreta el la tecla R el personaje vuelve a la posición original (4,3)." {
+    nivel1.restart()
+    assert.equals(game.at(4,3), personaje.position())
+  }
+
+
+  test "El pesonaje una vez iniciado el juego, cuando lo muevo dos veces hacia arriba pasa a la posición (4,5)." {
+    nivel1.iniciar()
+    personaje.moverArriba()
+    personaje.moverArriba()
+    assert.equals(game.at(4,5), personaje.position())
+   }
+
+
+  test "Luego del test anterior, me muevo hacia la derecha y paso a estar en la posición (5,5)." {
+    nivel1.iniciar()
+    personaje.moverArriba()
+    personaje.moverArriba()
+    personaje.moverDerecha()
+    assert.equals(game.at(5,5), personaje.position())
+  }
+
+
+ 	test "Se inicia el juego, el personaje se mueve dos veces para arriba y una a la derecha pero no puede avanzar / empujar debido a que existe una pared." {
+    nivel1.iniciar()
+    personaje.moverArriba()
+    personaje.moverArriba()
+    personaje.moverDerecha()
+    assert.throwsExceptionWithMessage("No podes mover las paredes", { personaje.empujar(new ParedBeige(position = new Position(x = 6, y = 4)))})
+	}
+
+
+  test "Se inicia el juego, se mueve el personaje hacia abajo, empuja la caja hacia la izquierda."{
+    nivel1.iniciar()
+    personaje.moverAbajo()
+    personaje.moverIzquierda()
+    personaje.empujar(new CajaNegra(position = new Position(x = 3, y = 2),llegadas = new Position(x = 4, y = 15)))
+    assert.equals(game.at(3,2), personaje.position())
+	}
+
+
+  test "Se mueve el personaje hacia abajo, empuja la caja 2 veces la caja a la izquierda pero no puede seguir empujandola debido a que algo traba la caja."{
+    nivel1.iniciar()
+    personaje.moverAbajo()
+    personaje.moverIzquierda()
+    personaje.empujar(new CajaNegra(position = new Position(x = 3, y = 2),llegadas = new Position(x = 4, y = 15)))
+    personaje.empujar(new CajaNegra(position = new Position(x = 2, y = 2),llegadas = new Position(x = 4, y = 15)))
+    const paredBaige = new ParedBeige(position = new Position(x = 0, y = 2))
+    assert.throwsExceptionWithMessage("Algo traba la caja.", { (new CajaNegra(position = new Position(x = 1, y = 2),llegadas = new Position(x = 4, y = 15))).mover(izquierda)})
+	}
+
+
+  test "La caja llegó a la meta." {
+    game.clear()
+    const meta = new MetaVioleta(position = new Position(x = 4, y = 15))
+    const cajaNegraMeta = new CajaNegra(position = new Position(x = 4, y = 15),llegadas = new Position(x = 4, y = 15))
+    assert.equals(cajaNegraMeta.position(), meta.position())
+  }
+}

@@ -2,13 +2,14 @@
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Rios Julieta Carolina
+- 
+-
+- 
 
 ## Capturas
 
-<img src="./sokobanGif.gif" width=900 />
+<img src="assets/sokobanGif.gif" width=900 />
 
 ## Reglas de Juego / Instrucciones
 
