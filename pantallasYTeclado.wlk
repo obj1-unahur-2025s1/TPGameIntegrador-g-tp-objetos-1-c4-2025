@@ -16,7 +16,7 @@ object pantallaInicio {
 }
 
 object pantallaEntreNiveles {
-	method position() = game.origin()
+	method position() = game.at(2,2)
 	method image() = "nivelSuperado.png"
 	method cargar() {
 		game.addVisual(self)
