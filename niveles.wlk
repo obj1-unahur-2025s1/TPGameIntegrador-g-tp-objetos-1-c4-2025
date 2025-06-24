@@ -10,11 +10,9 @@ class Nivel{
   
   method iniciar() {
     game.addVisual(personaje)
-	
+	personaje.position(game.at(4, 3))
 	teclado.iniciar()
     	keyboard.r().onPressDo({ self.restart() })
-	//keyboard.g().onPressDo({self.nivelSuperado(cajas)})
-	//Mirar comentario del metodo nivelSuperado(x)
 
 		//	PAREDES
 		const ancho = game.width() - 1
@@ -56,7 +54,6 @@ class Nivel{
 		return dibujo
 	}
 
-  //Si gana, esta bien. Si no gana, devuelve la imagen de "Has pasado el nivel" aunque no lo hayas ganado. Cambiar.
   method nivelSuperado() {
 		if (cajas.all({ caja => caja.estaEnLaMeta() }))
 			game.clear()
@@ -66,8 +63,6 @@ class Nivel{
 
 
 object nivel1 inherits Nivel (siguienteNivel = nivel2){
-	//const posicionesParedes = []
-
     override method iniciar(){
 		super()
 		game.boardGround("Ground_Concrete.png")
@@ -294,9 +289,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 }
 
 
-object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ //agregar nivel 3 o pantalla final
-	//const posicionesParedesGrises = [ ]
-
+object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ 
     override method iniciar(){
       super()
 	  game.boardGround("GroundGravel_Grass.png")
@@ -496,7 +489,7 @@ object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ //agregar nivel
 				new Position(x = 27, y = 18),
 				new Position(x = game.width() - 2, y = game.height() - 2)
 			])
-			//posicionesParedesGrises.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
+
 			posicionesParedes.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
 
 	//donde hay que ubicar las cajas
@@ -518,5 +511,9 @@ object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){ //agregar nivel
 		].map({ posicion => self.dibujar(new CajaMarron(position = posicion, llegadas = metas)) }))
     }
 	
-	
+	override method nivelSuperado() {
+		if (cajas.all({ caja => caja.estaEnLaMeta() }))
+			game.clear()
+			juegoCompletado.cargar()
+	}
 }

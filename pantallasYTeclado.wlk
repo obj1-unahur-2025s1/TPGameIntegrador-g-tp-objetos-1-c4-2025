@@ -2,8 +2,8 @@ import niveles.*
 import sokoban.*
 
 object pantallaInicio {
-  const position = game.at(2,2)
-  method image() = "pantallaDeInicio2.png"
+  const position = game.origin()
+  method image() = "pantallaDeInicio1.png"
   method position() = position
   method cargar() {
     game.addVisual(self)
@@ -16,8 +16,8 @@ object pantallaInicio {
 }
 
 object pantallaEntreNiveles {
-	method position() = game.at(2,2)
-	method image() = "nivelSuperado.png"
+	method position() = game.origin()
+	method image() = "nivelSuperado1.png"
 	method cargar() {
 		game.addVisual(self)
 		keyboard.enter().onPressDo({
@@ -30,7 +30,7 @@ object pantallaEntreNiveles {
 
 object instrucciones {
   method position() = game.at(7,0)
-  method image() = "instruccionesNuevo2.png"
+  method image() = "instrucciones1.png"
   method cargar() {
     game.addVisual(self)
   }
@@ -39,9 +39,9 @@ object instrucciones {
   }
 }
 object juegoCompletado {
-  method image() = "pantallaFinal.png"
-  method position() = game.at(2,2)
-  method iniciar() {
+  method image() = "pantallaFinal1.png"
+  method position() = game.origin()
+  method cargar() {
     game.clear()
     game.addVisual(self)
     keyboard.enter().onPressDo({nivel1.iniciar()
