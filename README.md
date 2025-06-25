@@ -6,6 +6,7 @@
 - Rios Julieta Carolina
 - Valdez Alan Ezequiel
 - Ramirez Tobías
+- Diaz Sebastian Horacio
 
 ## Capturas
 
