@@ -4,7 +4,7 @@
 
 - Rios Julieta Carolina
 - 
--
+- Valdez Alan Ezequiel
 - Benítez Alan David
 
 ## Capturas
