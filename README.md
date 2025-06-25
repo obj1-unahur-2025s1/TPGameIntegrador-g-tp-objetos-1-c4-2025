@@ -1,11 +1,11 @@
-# WOLLOKOBAN
+# SOKOBAN
 
 ## Equipo de desarrollo
 
-- Rios Julieta Carolina
-- 
-- Valdez Alan Ezequiel
 - Benítez Alan David
+- Rios Julieta Carolina
+- Valdez Alan Ezequiel
+- 
 
 ## Capturas
 
