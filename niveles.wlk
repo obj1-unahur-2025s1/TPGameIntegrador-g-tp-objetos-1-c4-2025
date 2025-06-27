@@ -62,6 +62,10 @@ class Nivel{
 	}
 }
 
+//Se utilizara (si puedo antes del domingo) matrices tanto en el nivel 1 como en el nivel 2.
+//Si despues de realizar los cambios el rendimiento del juego sigue siendo el mismo,
+//se acortaran las columnas y filas (ya sea a 20x20 o a 15x15).
+//Para compensar esto, probablemente se agreguen mas niveles.
 
 object nivel1 inherits Nivel (siguienteNivel = nivel2){
     override method iniciar(){
