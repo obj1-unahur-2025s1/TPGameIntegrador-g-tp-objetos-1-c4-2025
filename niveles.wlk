@@ -7,40 +7,44 @@ class Nivel{
   const posicionesParedes = []
   const property metas = []
   const property cajas = []
+  var ancho = 0 
+  var largo = 0
   
   method iniciar() {
     game.addVisual(personaje)
 	personaje.position(game.at(4, 3))
 	game.onTick(500, "animacion", {personaje.siguienteFrame()})
 	teclado.iniciar()
-    	keyboard.r().onPressDo({ self.restart() })
+    keyboard.r().onPressDo({ self.restart() })
 
-		//	PAREDES
-		const ancho = game.width() - 1
-		const largo = game.height() - 1
+	//	PAREDES
+	ancho = game.width() - 1
+	largo = game.height() - 1
 
     // borde inferior
-		(0 .. ancho).forEach(
-			{ n => posicionesParedes.add(new Position(x = n, y = 0)) }
-		)
-
+	self.borde(0,"inf")
     // borde superior
-    	(0 .. ancho).forEach(
-			{ n => posicionesParedes.add(new Position(x = n, y = largo)) }
-		)
-
-		// borde izq
-		(0 .. largo).forEach(
-			{ n => posicionesParedes.add(new Position(x = 0, y = n)) }
-		)
-		
+	self.borde(largo, "sup")
+    // borde izq
+	self.borde(0, "izq")
     // borde der
-		(0 .. largo).forEach(
-			{ n => posicionesParedes.add(new Position(x = ancho, y = n)) }
-		)
+	self.borde(ancho, "der")
 
-		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
-		game.onCollideDo(personaje, {unaCaja=>personaje.empujar(unaCaja)})
+	posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
+	game.onCollideDo(personaje, {unaCaja=>personaje.empujar(unaCaja)})
+  }
+
+  method borde(numero, bordeAVer){
+	if (bordeAVer == "inf" or bordeAVer == "sup"){
+		(0 .. ancho).forEach(
+			{ n => posicionesParedes.add(new Position(x = n, y = numero)) }
+		)
+	}
+	else {
+		(0 .. largo).forEach(
+			{ n => posicionesParedes.add(new Position(x = numero, y = n)) }
+		)
+	}
   }
     
 
