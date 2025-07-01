@@ -55,7 +55,7 @@ class Nivel{
     
   method dibujar(dibujo) {
 		game.addVisual(dibujo)
-		return dibujo
+		
 	}
 
   method nivelSuperado() {
