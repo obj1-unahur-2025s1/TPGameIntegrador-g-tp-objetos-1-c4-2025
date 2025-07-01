@@ -539,7 +539,7 @@ object mapa {
 /*
 	Importante: Esto incluye las paredes laterales,superiores e inferiores. No incluye Cajas. Si incluye metas.
 
-	initialGridMap = [
+	mapaLvl = [
       [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
       [p,p,p,p,p,p,p,p,p,p,v,m,v,p,p,v,v,v,v,p,v,v,v,v,p,p,p,p,p,p],
       [p,p,p,p,p,p,p,p,p,p,v,v,v,v,v,v,v,v,v,v,v,p,v,p,v,v,v,v,v,p],
