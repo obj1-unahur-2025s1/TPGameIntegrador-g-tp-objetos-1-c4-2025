@@ -29,7 +29,7 @@ object personaje {
 	method image() = image
 
   	method empujar(unElemento){
-		if (!unElemento.esMovible() and !unElemento.esPisable()){
+		if (!unElemento.esMovible() and !unElemento.esPisable(self)){
 			self.retroceder() //no retrocede
 		}else{
 			unElemento.mover(direccion)

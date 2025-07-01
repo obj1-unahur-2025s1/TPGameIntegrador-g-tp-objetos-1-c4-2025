@@ -4,12 +4,13 @@ import paredesYCajasYMetas.*
 class Nivel{
 
   const property siguienteNivel
-  const posicionesParedes = []
+  //const posicionesParedes = []
   const property metas = []
   const property cajas = []
-  var ancho = 0 
-  var largo = 0
+  //var ancho = 0 
+  //var largo = 0
   
+
   method iniciar() {
     game.addVisual(personaje)
 	personaje.position(game.at(4, 3))
@@ -17,6 +18,8 @@ class Nivel{
     keyboard.r().onPressDo({ self.restart() })
 
 	//	PAREDES
+
+/*
 	ancho = game.width() - 1
 	largo = game.height() - 1
 
@@ -30,9 +33,11 @@ class Nivel{
 	self.borde(ancho, "der")
 
 	posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
+
+*/
 	game.onCollideDo(personaje, {unaCaja=>personaje.empujar(unaCaja)})
   }
-
+/*
   method borde(numero, bordeAVer){
 	if (bordeAVer == "inf" or bordeAVer == "sup"){
 		(0 .. ancho).forEach(
@@ -45,7 +50,8 @@ class Nivel{
 		)
 	}
   }
-    
+
+*/  
 
   method restart() {
 		game.clear()
@@ -75,7 +81,54 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 		super()
 		game.boardGround("Ground_Concrete.png")
 
+		const borde = (0..(game.width() - 1))
+
+		const pared1 = [1,2,3,9,18,24,28]
+		const pared2 = [9,22]
+		const pared3 = [1,9,19,24]
+		const pared4 = [1,2,3,6,8,9,10,11,20,21,22]
+		const pared5 = [1,2,3,6,18,25,28]
+		const pared6 = [1,2,3,6,7,8,9,10,17,21,22,23]
+		const pared7 = [1,6,8,9,10,16,18,25,26,27,28]
+		const pared8 = [1,9,10,13,18,23,24,25,26,27,28]
+		const pared9 = [1,4,5,6,7,9,10,12,13,14,16,23,24,25,26,27,28]
+		const pared10 = [1,5,6,10,12,18,25,26,27,28]
+		const pared11 = [2,5,6,7,8,10,14,16,18,19,20,22]
+		const pared12 = [1,10,16,17,18,22,25,26]
+		const pared13 = [1,5,6,7,8,12,15,16,17,18,21,24,25,26]
+		const pared14 = [1,2,3,4,5,6,7,8,10,11,12,21,24]
+		const pared15 = [1,2,3,11,12,13,16,21,24,26,28]
+		const pared16 = [1,2,3,4,8,9,12,13,14,15,17,18,26]
+		const pared17 = [1,2,3,4,5,6,7,8,9,21,23]
+		const pared18 = [1,2,3,4,5,7,8,9,13,14,19,24,25,26,27]
+
+
+		borde.forEach({a => game.addVisual(new ParedBeige (x = 0, y= a))})
+    	borde.forEach({a => game.addVisual(new ParedBeige (x = (game.width() - 1), y= a))})
+    	borde.forEach({a => game.addVisual(new ParedBeige (x = a, y= 0))})
+    	borde.forEach({a => game.addVisual(new ParedBeige (x = a, y= (game.height() - 1)))})
+
+		pared1.forEach({a=> game.addVisual(new ParedBeige(x=a , y=1))})
+		pared2.forEach({a=> game.addVisual(new ParedBeige(x=a , y=2))})
+		pared3.forEach({a=> game.addVisual(new ParedBeige(x=a , y=3))})
+		pared4.forEach({a=> game.addVisual(new ParedBeige(x=a , y=4))})
+		pared5.forEach({a=> game.addVisual(new ParedBeige(x=a , y=5))})
+		pared6.forEach({a=> game.addVisual(new ParedBeige(x=a , y=6))})
+		pared7.forEach({a=> game.addVisual(new ParedBeige(x=a , y=7))})
+		pared8.forEach({a=> game.addVisual(new ParedBeige(x=a , y=8))})
+		pared9.forEach({a=> game.addVisual(new ParedBeige(x=a , y=9))})
+		pared10.forEach({a=> game.addVisual(new ParedBeige(x=a , y=10))})
+		pared11.forEach({a=> game.addVisual(new ParedBeige(x=a , y=11))})
+		pared12.forEach({a=> game.addVisual(new ParedBeige(x=a , y=12))})
+		pared13.forEach({a=> game.addVisual(new ParedBeige(x=a , y=13))})
+		pared14.forEach({a=> game.addVisual(new ParedBeige(x=a , y=14))})
+		pared15.forEach({a=> game.addVisual(new ParedBeige(x=a , y=15))})
+		pared16.forEach({a=> game.addVisual(new ParedBeige(x=a , y=16))})
+		pared17.forEach({a=> game.addVisual(new ParedBeige(x=a , y=17))})
+		pared18.forEach({a=> game.addVisual(new ParedBeige(x=a , y=18))})
+
 		//paredes propias del nivel
+		/*
       	posicionesParedes.addAll(
 			[
 				new Position(x = 1, y = 1),
@@ -275,6 +328,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 			]
 		)
 		posicionesParedes.forEach({ posicionParedes => self.dibujar(new ParedBeige(position = posicionParedes)) })
+	*/
 
 		//donde hay que ubicar las cajas
 		metas.addAll([new Position(x = 4, y = 15),
@@ -302,6 +356,55 @@ object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){
       super()
 	  game.boardGround("GroundGravel_Grass.png")
 	  //posicionesParedesGrises.addAll(
+
+		const borde = (0..(game.width() - 1))
+
+		const pared1 = [9,18,24,28]
+		const pared2 = [4,7]
+		const pared3 = [17,18,19,24]
+		const pared4 = [1,2,3,9,11,17,18,19,20,21,22]
+		const pared5 = [1,2,3,6,13,18,26,27]
+		const pared6 = [4,6,7,9,10,13,14,17,19,22,23]
+		const pared7 = [4,8,9,17,18,22,23,25,26,27,29]
+		const pared8 = [1,9,10,13,18,23,24,25,26,27,28]
+		const pared9 = [1,4,5,6,7,9,10,12,13,14,16,23,24,25,26,27,28]
+		const pared10 = [1,5,6,10,12,18,25,26,27,28]
+		const pared11 = [1,2,5,6,7,8,10,14,16,18,19,20,22]
+		const pared12 = [1,10,16,17,18,22,25,26]
+		const pared13 = [1,5,6,7,8,15,16,17,18,21,24,25,26]
+		const pared14 = [1,2,3,4,5,6,7,8,10,11,12,21,24]
+		const pared15 = [1,2,3,11,12,13,16,21,24,26,28]
+		const pared16 = [1,2,3,4,8,9,12,13,14,15,16,18,26]
+		const pared17 = [1,2,3,4,5,6,7,8,9,21,23]
+		const pared18 = [1,2,3,4,5,6,7,8,9,13,14,19,24,25,26,27]
+
+		
+		borde.forEach({a => game.addVisual(new ParedGris (x = 0, y= a))})
+    	borde.forEach({a => game.addVisual(new ParedGris (x = (game.width() - 1), y= a))})
+    	borde.forEach({a => game.addVisual(new ParedGris (x = a, y= 0))})
+    	borde.forEach({a => game.addVisual(new ParedGris (x = a, y= (game.height() - 1)))})
+
+		pared1.forEach({a=> game.addVisual(new ParedGris(x=a , y=1))})
+		pared2.forEach({a=> game.addVisual(new ParedGris(x=a , y=2))})
+		pared3.forEach({a=> game.addVisual(new ParedGris(x=a , y=3))})
+		pared4.forEach({a=> game.addVisual(new ParedGris(x=a , y=4))})
+		pared5.forEach({a=> game.addVisual(new ParedGris(x=a , y=5))})
+		pared6.forEach({a=> game.addVisual(new ParedGris(x=a , y=6))})
+		pared7.forEach({a=> game.addVisual(new ParedGris(x=a , y=7))})
+		pared8.forEach({a=> game.addVisual(new ParedGris(x=a , y=8))})
+		pared9.forEach({a=> game.addVisual(new ParedGris(x=a , y=9))})
+		pared10.forEach({a=> game.addVisual(new ParedGris(x=a , y=10))})
+		pared11.forEach({a=> game.addVisual(new ParedGris(x=a , y=11))})
+		pared12.forEach({a=> game.addVisual(new ParedGris(x=a , y=12))})
+		pared13.forEach({a=> game.addVisual(new ParedGris(x=a , y=13))})
+		pared14.forEach({a=> game.addVisual(new ParedGris(x=a , y=14))})
+		pared15.forEach({a=> game.addVisual(new ParedGris(x=a , y=15))})
+		pared16.forEach({a=> game.addVisual(new ParedGris(x=a , y=16))})
+		pared17.forEach({a=> game.addVisual(new ParedGris(x=a , y=17))})
+		pared18.forEach({a=> game.addVisual(new ParedGris(x=a , y=18))})
+
+
+	  /* 
 	  posicionesParedes.addAll(
 			[
 				new Position(x = 9, y = 1),
@@ -499,6 +602,7 @@ object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){
 			])
 
 			posicionesParedes.forEach({ posiciones => self.dibujar(new ParedGris(position = posiciones)) })
+*/
 
 	//donde hay que ubicar las cajas
 		metas.addAll([
@@ -539,7 +643,7 @@ object mapa {
 /*
 	Importante: Esto incluye las paredes laterales,superiores e inferiores. No incluye Cajas. Si incluye metas.
 
-	mapaLvl = [
+	initialGridMap = [
       [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
       [p,p,p,p,p,p,p,p,p,p,v,m,v,p,p,v,v,v,v,p,v,v,v,v,p,p,p,p,p,p],
       [p,p,p,p,p,p,p,p,p,p,v,v,v,v,v,v,v,v,v,v,v,p,v,p,v,v,v,v,v,p],
@@ -559,6 +663,6 @@ object mapa {
       [p,p,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,p,v,v,v,v,p,v,v,v,m,p],
       [p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,p],
       [p,p,p,p,v,v,v,v,v,p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,p,v,v,v,p,p],
-      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p]
+      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
     ]
 */

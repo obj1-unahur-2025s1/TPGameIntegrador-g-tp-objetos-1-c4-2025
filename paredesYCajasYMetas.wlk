@@ -4,9 +4,14 @@ import sokoban.*
 
 //PAREDES
 class Pared {
-	var property position
+	//var property position
+		var property x
+	var property y 
+
+	var property position = game.at(x,y)
+
 	method image ()
-	method position() = position
+	//method position() = position
 	method mover(direccion) {
 		//self.error("No podes mover las paredes")
 	}
