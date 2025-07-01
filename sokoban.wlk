@@ -1,7 +1,7 @@
 import wollok.game.*
 import niveles.*
 import pantallasYTeclado.*
-import animacionYSonido.*
+import sonido.*
 
 object juegoSokoban{
   var property nivelActual = nivel1
@@ -28,19 +28,13 @@ object personaje {
 
 	method image() = image
 
-	method siguienteFrame() {
-		direccion.siguienteFrame()
-		image = direccion.imagen()
-	}
-
   	method empujar(unElemento){
-    	try
+		if (!unElemento.esMovible() and !unElemento.esPisable()){
+			self.retroceder() //no retrocede
+		}else{
 			unElemento.mover(direccion)
-		catch e {
-			self.retroceder()
-			throw e
 		}
-  	}
+	}
 
 	method retroceder() {
 		position = direccion.opuesto().siguiente(position)
@@ -48,21 +42,25 @@ object personaje {
  
 	method moverArriba() {
 		direccion = arriba
+		image = "Animacion3.gif"
 		self.avanzar()
 	}
 
 	method moverAbajo() {
 		direccion = abajo
+		image = "Animacion2.gif"
 		self.avanzar()
 	}
 
 	method moverIzquierda() {
 		direccion = izquierda
+		image = "Animacion4.gif"
 		self.avanzar()
 	}
 
 	method moverDerecha() {
 		direccion = derecha
+		image = "Animacion1.gif"
 		self.avanzar()
 	}
 	
@@ -78,43 +76,25 @@ object personaje {
 
 class Direccion {
 	method siguiente(position)
-	method imagen()
-	method siguienteFrame()
 }
 
 object izquierda inherits Direccion { 
 	override method siguiente(position) = position.left(1) 
 	method opuesto() = derecha
-	override method imagen() = frameIzquierda.image()
-	override method siguienteFrame() {
-		frameIzquierda.siguienteImage()
-	}
 }
 
 object derecha inherits Direccion { 
 	override method siguiente(position) = position.right(1) 
 	method opuesto() = izquierda
-	override method imagen() = frameDerecha.image()
-	override method siguienteFrame() {
-		frameDerecha.siguienteImage()
-	}
 }
 
 object abajo inherits Direccion { 
 	override method siguiente(position) = position.down(1) 
 	method opuesto() = arriba
-	override method imagen() = frameAbajo.image()
-	override method siguienteFrame() {
-		frameAbajo.siguienteImage()
-	}
 }
 
 object arriba inherits Direccion { 
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
-	override method imagen() = frameArriba.image()
-	override method siguienteFrame() {
-		frameArriba.siguienteImage()
-	}
 }
 

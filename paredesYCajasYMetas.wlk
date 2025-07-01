@@ -8,10 +8,11 @@ class Pared {
 	method image ()
 	method position() = position
 	method mover(direccion) {
-		self.error("No podes mover las paredes")
+		//self.error("No podes mover las paredes")
 	}
 	//Colision
   	method esPisable(_) = false
+	method esMovible() = false
 }
 
 class ParedBeige inherits Pared {
@@ -43,6 +44,7 @@ class Caja {
 		}
 } 
 	method esPisable(_) = false
+	method esMovible() = true
 
 	method estaEnLaMeta() = llegadas.any({ llegada => llegada.position() == position })
 }
@@ -62,6 +64,7 @@ class Meta {
 	const property position
 	method mover(direccion) {  }
 	method esPisable(_) = true
+	method esMovible() = false
 	method image()
 }
 

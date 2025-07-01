@@ -1,4 +1,4 @@
-import animacionYSonido.*
+import sonido.*
 import niveles.*
 import sokoban.*
 
