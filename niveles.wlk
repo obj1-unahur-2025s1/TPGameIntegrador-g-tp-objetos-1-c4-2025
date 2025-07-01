@@ -525,3 +525,40 @@ object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){
 			juegoCompletado.cargar()
 	}
 }
+
+/*
+Este objeto mapa seria un const en Nivel, asi lo heredan los 2 niveles 
+
+object mapa {
+  const property posicionesParedes = []
+  const property metas = []
+  const property cajas = []
+}
+*/
+
+/*
+	Importante: Esto incluye las paredes laterales,superiores e inferiores. No incluye Cajas. Si incluye metas.
+
+	initialGridMap = [
+      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
+      [p,p,p,p,p,p,p,p,p,p,v,m,v,p,p,v,v,v,v,p,v,v,v,v,p,p,p,p,p,p],
+      [p,p,p,p,p,p,p,p,p,p,v,v,v,v,v,v,v,v,v,v,v,p,v,p,v,v,v,v,v,p],
+      [p,p,p,p,p,v,v,v,p,p,v,v,p,p,p,p,p,v,p,v,v,v,v,v,v,v,p,v,v,p],
+      [p,p,p,p,m,v,v,v,v,v,v,p,p,p,v,v,p,v,v,v,v,p,v,v,p,v,p,v,p,p],
+      [p,p,p,p,p,p,p,p,p,v,p,p,p,v,v,v,v,v,v,v,v,p,v,v,p,v,v,v,v,p],
+      [p,p,v,v,v,p,p,p,p,v,v,v,p,v,v,p,p,p,p,v,v,p,v,v,p,p,p,v,v,p],
+      [p,p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,p,p,p,v,v,v,p,v,v,p,p,v,v,p],
+      [p,p,p,v,v,p,p,p,p,v,p,v,v,v,p,v,p,m,p,p,p,v,p,v,v,v,v,v,v,p],
+      [p,p,v,v,v,p,p,v,v,v,p,v,p,v,v,v,v,v,p,v,v,v,v,v,v,p,p,p,p,p],
+      [p,p,v,v,p,p,p,p,v,p,p,v,p,p,p,v,p,v,v,v,v,v,v,p,p,p,p,p,p,p],
+      [p,p,v,v,v,v,v,v,v,p,p,v,v,p,v,v,v,v,p,v,v,v,v,p,p,p,p,p,p,p],
+      [p,p,v,v,v,v,p,v,p,p,p,v,v,v,v,v,p,v,p,v,v,v,v,v,v,p,p,p,p,p],
+      [p,p,p,p,v,v,p,p,p,p,p,v,v,v,v,v,v,p,v,v,v,p,p,p,v,v,v,v,v,p],
+      [p,p,p,p,v,v,p,v,v,v,v,v,v,v,v,v,v,v,p,v,v,v,v,v,v,p,v,v,p,p],
+      [p,p,p,p,v,v,p,v,p,p,p,p,v,v,v,v,v,v,v,v,p,p,p,v,v,v,v,v,v,p],
+      [p,p,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,p,v,v,v,v,p,v,v,v,m,p],
+      [p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,p],
+      [p,p,p,p,v,v,v,v,v,p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,p,v,v,v,p,p],
+      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
+    ]
+*/
