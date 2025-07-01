@@ -559,6 +559,6 @@ object mapa {
       [p,p,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,p,v,v,v,v,p,v,v,v,m,p],
       [p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,p],
       [p,p,p,p,v,v,v,v,v,p,v,v,v,v,v,v,v,v,p,v,v,v,v,v,p,v,v,v,p,p],
-      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
+      [p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p]
     ]
 */
