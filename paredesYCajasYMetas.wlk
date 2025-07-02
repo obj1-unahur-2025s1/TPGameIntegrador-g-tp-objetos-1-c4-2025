@@ -43,7 +43,8 @@ class Caja {
 		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)} //Devuelve todos los objetos en la posición dada.
 		)
 		if (!lugarLibre) {
-			throw new Exception(message = "Algo traba la caja.")
+			game.say(personaje,"no se puede avanzar hay pared")
+			throw new Exception(message = "no se puede avanzar hay pared")
 		}
 } 
 	method esPisable(_) = false

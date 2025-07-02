@@ -128,6 +128,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel2){
 		].map({ posicion => self.dibujar(new CajaNegra(position = posicion, llegadas = metas)) }))
     }
 
+
 }
 
 object nivel2 inherits Nivel (siguienteNivel = juegoCompletado){

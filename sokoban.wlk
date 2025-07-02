@@ -16,7 +16,7 @@ object juegoSokoban{
   }
 
   method siguienteNivel(){
-    nivelActual = nivelActual.siguienteNivel()
+    nivelActual = nivel2
     nivelActual.iniciar()
   }
 
@@ -44,25 +44,25 @@ object personaje {
  
 	method moverArriba() {
 		direccion = arriba
-		image = "Animacion3.gif"
+		image = "Character7.png"
 		self.avanzar()
 	}
 
 	method moverAbajo() {
 		direccion = abajo
-		image = "Animacion2.gif"
+		image = "Character4.png"
 		self.avanzar()
 	}
 
 	method moverIzquierda() {
 		direccion = izquierda
-		image = "Animacion4.gif"
+		image = "Character1.png"
 		self.avanzar()
 	}
 
 	method moverDerecha() {
 		direccion = derecha
-		image = "Animacion1.gif"
+		image = "Character2.png"
 		self.avanzar()
 	}
 	
