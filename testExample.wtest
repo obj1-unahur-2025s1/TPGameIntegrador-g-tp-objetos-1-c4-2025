@@ -1,0 +1,38 @@
+import niveles.*
+import iniciarJuego.*
+import pantallasYTeclado.*
+import paredesYCajasYMetas.*
+import sokoban.*
+
+describe "Grupo de test para sokoban" {
+ 
+  test "Cuando se apreta el la tecla R el personaje vuelve a la posición original (1,2)." {
+    nivel1.restart()
+    assert.equals(game.at(1,2), personaje.position())
+  }
+
+
+  test "El pesonaje una vez iniciado el juego, cuando lo muevo una vez hacia abajo y una hacia la derecha pasa a la posición (2,1)." {
+    nivel1.iniciar()
+    personaje.moverAbajo()
+    personaje.moverDerecha()
+    assert.equals(game.at(2,1), personaje.position())
+   }
+
+
+  test "Luego del test anterior, me muevo hacia la derecha y paso a estar en la posición (3,1)." {
+    nivel1.iniciar()
+    personaje.moverAbajo()
+    personaje.moverDerecha()
+    personaje.moverDerecha()
+    assert.equals(game.at(3,1), personaje.position())
+  }
+
+
+  test "La caja llegó a la meta." {
+    game.clear()
+    const meta = new MetaVioleta(position = new Position(x = 1, y = 1))
+    const cajaNegraMeta = new CajaNegra(position = new Position(x = 1, y = 1),llegadas = new Position(x = 1, y = 1))
+    assert.equals(cajaNegraMeta.position(), meta.position())
+  }
+}

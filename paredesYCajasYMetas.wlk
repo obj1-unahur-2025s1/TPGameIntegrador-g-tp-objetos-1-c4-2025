@@ -5,16 +5,14 @@ import sokoban.*
 //PAREDES
 class Pared {
 	//var property position
-		var property x
+	var property x
 	var property y 
 
 	var property position = game.at(x,y)
-
 	method image ()
+	
 	//method position() = position
-	method mover(direccion) {
-		//self.error("No podes mover las paredes")
-	}
+	method mover(direccion) {}
 	//Colision
   	method esPisable(_) = false
 	method esMovible() = false
@@ -44,8 +42,8 @@ class Caja {
 		const posAlLado = direccion.siguiente(position)
 		const lugarLibre = game.getObjectsIn(posAlLado).all({ obj => obj.esPisable(self)} //Devuelve todos los objetos en la posición dada.
 		)
-		if (not lugarLibre) {
-			self.error("Algo traba la caja.")
+		if (!lugarLibre) {
+			throw new Exception(message = "Algo traba la caja.")
 		}
 } 
 	method esPisable(_) = false
@@ -69,8 +67,8 @@ class Meta {
 	const property position
 	method mover(direccion) {  }
 	method esPisable(_) = true
-	method esMovible() = false
 	method image()
+	method esMovible() = false
 }
 
 

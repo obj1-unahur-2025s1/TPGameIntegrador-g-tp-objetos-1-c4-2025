@@ -8,10 +8,10 @@ object juegoSokoban{
 
   method iniciar(){
     game.title("Sokoban")
-	game.height(20)
-	game.width(30)
+	game.height(5)
+	game.width(8)
 	game.cellSize(64)
-	sonido.cargar()
+	//sonido.cargar()
     pantallaInicio.cargar()
   }
 
@@ -19,10 +19,12 @@ object juegoSokoban{
     nivelActual = nivelActual.siguienteNivel()
     nivelActual.iniciar()
   }
+
+  method nivelCompletado() = nivelActual.cajas().all({c=>c.estaEnLaMeta()})
 }
 
 object personaje {
-	var property position = game.at(4, 3)
+	var property position = game.at(1,2)
 	var direccion = derecha
   	var image = "Character4.png"
 
@@ -97,4 +99,3 @@ object arriba inherits Direccion {
 	override method siguiente(position) = position.up(1) 
 	method opuesto() = abajo
 }
-

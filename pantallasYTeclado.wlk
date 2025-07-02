@@ -4,7 +4,7 @@ import sokoban.*
 
 object pantallaInicio {
   const position = game.origin()
-  method image() = "pantallaDeInicio1.png"
+  method image() = "pantallaDeInicio2a.png"
   method position() = position
   method cargar() {
     game.addVisual(self)
@@ -20,7 +20,7 @@ object pantallaInicio {
 
 object pantallaEntreNiveles {
 	method position() = game.origin()
-	method image() = "nivelSuperado1.png"
+	method image() = "nivelSuperado2.png"
 	method cargar() {
 		game.addVisual(self)
 		keyboard.enter().onPressDo({
@@ -32,8 +32,8 @@ object pantallaEntreNiveles {
 
 
 object instrucciones {
-  method position() = game.at(7,0)
-  method image() = "instrucciones1.png"
+  method position() = game.at(2,0)
+  method image() = "instrucciones2.png"
   method cargar() {
     game.addVisual(self)
   }
@@ -42,9 +42,9 @@ object instrucciones {
   }
 }
 object juegoCompletado {
-  method image() = "pantallaFinal1.png"
+  method image() = "pantallaFinal2.png"
   method position() = game.origin()
-  method cargar() {
+  method iniciar() {
     game.clear()
     sonido.parar()
     game.addVisual(self)
@@ -62,8 +62,9 @@ object teclado{
 		keyboard.right().onPressDo({ personaje.moverDerecha() })
     keyboard.i().onPressDo({instrucciones.cargar()})
     keyboard.b().onPressDo({instrucciones.salir()})
-    keyboard.g().onPressDo({if(juegoSokoban.nivelActual().cajas().all({c=>c.estaEnLaMeta()})) juegoSokoban.nivelActual().nivelSuperado()})
+    keyboard.g().onPressDo({if(juegoSokoban.nivelCompletado()) juegoSokoban.nivelActual().nivelSuperado()})
     keyboard.minusKey().onPressDo({ sonido.disminuirVolumen() })
 		keyboard.plusKey().onPressDo({ sonido.aumentarVolumen() })
+
   }
 }
