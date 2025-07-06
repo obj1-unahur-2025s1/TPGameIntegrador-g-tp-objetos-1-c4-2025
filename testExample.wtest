@@ -31,8 +31,8 @@ describe "Grupo de test para sokoban" {
 
   test "La caja llegó a la meta." {
     game.clear()
-    const meta = new MetaVioleta(position = new Position(x = 1, y = 1))
-    const cajaNegraMeta = new CajaNegra(position = new Position(x = 1, y = 1),llegadas = new Position(x = 1, y = 1))
-    assert.equals(cajaNegraMeta.position(), meta.position())
+    const meta = new Meta(position = new Position(x = 1, y = 1))
+    const cajaMeta = new Caja(position = new Position(x = 1, y = 1),llegadas = new Position(x = 1, y = 1))
+    assert.equals(cajaMeta.position(), meta.position())
   }
 }

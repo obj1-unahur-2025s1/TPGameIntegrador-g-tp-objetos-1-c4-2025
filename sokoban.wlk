@@ -11,12 +11,11 @@ object juegoSokoban{
 	game.height(5)
 	game.width(8)
 	game.cellSize(64)
-	//sonido.cargar()
     pantallaInicio.cargar()
   }
 
   method siguienteNivel(){
-    nivelActual = nivel2
+    nivelActual = nivelActual.siguienteNivel()
     nivelActual.iniciar()
   }
 
@@ -32,7 +31,7 @@ object personaje {
 
   	method empujar(unElemento){
 		if (!unElemento.esMovible() and !unElemento.esPisable(self)){
-			self.retroceder() //no retrocede
+			self.retroceder()
 		}else{
 			unElemento.mover(direccion)
 		}
