@@ -8,6 +8,7 @@ object juegoSokoban{
 
   method iniciar(){
     game.title("Sokoban")
+	game.boardGround("Ground_Concrete.png")
 	game.height(5)
 	game.width(8)
 	game.cellSize(64)
